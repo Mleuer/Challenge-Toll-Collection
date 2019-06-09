@@ -1,5 +1,8 @@
 ### Problem Description
-For this programming challenge, you are tasked with writing software that processes highway tolls. At its most basic, your program first reads in text input listing all vehicles that have passed through some toll booth on a certain day, then it computes and outputs the toll that should be charged to the driver of each vehicle as well as the total toll revenue earned at that toll booth for the day.
+For this programming challenge, you are tasked with writing a program that processes highway tolls. At a high level, the program’s specification can be laid out as follows: 
+1. Read in and parse text input listing all vehicles that have passed through some toll booth on a certain day.
+2. Compute and output the toll that should be charged to the driver of each vehicle.
+3. Compute and output the total toll revenue earned at the toll booth for the day.
 
 #### Input
 The format of the input your program will read in is exactly as specified here: the record of all vehicles that have passed through the toll booth for the day will be in a file named `DetectedVehicles.txt`. Within `DetectedVehicles.txt`, each line represents a vehicle identified by the toll booth's Automated Vehicle Identification technology. Each line will contain the vehicle' **registration** ("license plate") **number**, **make**, **model**, **year**, **number of axles**, and **number of occupants**, in precisely that order. Below are a few example lines that follow this exact format, as found in `DetectedVehicles.txt` - you should design your program with the assumption that its input will be in this form:
