@@ -9,7 +9,36 @@ public class Vehicle {
     public int axles;
     public int occupants;
 
-    public static Vehicle createVehicleFromText(String s) {
-        return new Vehicle();
+    public static String extractRegistrationFromText(String vehicleDescription) {
+        StringBuilder vehicleRegistration = new StringBuilder();
+        boolean vehicleRegistrationFound = false;
+
+        for (int i = 0; i < vehicleDescription.length(); i++){
+            char character = vehicleDescription.charAt(i);
+            if (character == ':') {
+                vehicleRegistrationFound = true;
+                continue;
+            }
+            if (character == ',') {
+                break;
+            }
+            if (vehicleRegistrationFound) {
+                vehicleRegistration.append(character);
+            }
+        }
+        String cleanedVehicleRegistration = vehicleRegistration.toString();
+        cleanedVehicleRegistration = cleanedVehicleRegistration.replaceAll(" ", "");
+
+        return cleanedVehicleRegistration;
+    }
+
+
+    public static Vehicle createVehicleFromText(String vehicleDescription) {
+//      Registration: Ecto-1, Make: Cadillac, Model: Fleetwood, Year: 1959, Axles: 2, Occupants: 4
+
+        String registration = extractRegistrationFromText(vehicleDescription);
+
+
+        return null;
     }
 }
