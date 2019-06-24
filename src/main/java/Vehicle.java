@@ -9,6 +9,35 @@ public class Vehicle {
     public int axles;
     public int occupants;
 
+    public Vehicle(String registration, String make, String model, Year year, int axles, int occupants) {
+        this.registration = registration;
+        this.make = make;
+        this.model = model;
+        this.year = year;
+        this.axles = axles;
+        this.occupants = occupants;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Vehicle) {
+            Vehicle vehicle = (Vehicle)obj;
+
+            if (this.registration.equals(vehicle.registration) &&
+                this.make.equals(vehicle.make) &&
+                this.model.equals(vehicle.model) &&
+                this.year.equals(vehicle.year) &&
+                this.axles == vehicle.axles &&
+                this.occupants == vehicle.occupants
+                )
+            {
+                return true;
+            }
+
+        }
+        return false;
+    }
+
     public static String extractRegistrationFromText(String vehicleDescription) {
         StringBuilder vehicleRegistration = new StringBuilder();
         boolean vehicleRegistrationFound = false;
