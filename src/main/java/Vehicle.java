@@ -61,13 +61,56 @@ public class Vehicle {
         return cleanedVehicleRegistration;
     }
 
+    public static String extractMakeFromText(String vehicleDescription) {
+        StringBuilder vehicleMake = new StringBuilder();
+
+        String makeIdentifier = "Make: ";
+        int index = vehicleDescription.indexOf(makeIdentifier);
+
+        int vehicleMakeStartingIndex = index + makeIdentifier.length();
+        char currentCharacter = ' ';
+
+        for (int i = vehicleMakeStartingIndex;; i++) {
+            currentCharacter = vehicleDescription.charAt(i);
+            if (currentCharacter == ',') {
+                break;
+            }
+            vehicleMake.append(currentCharacter);
+        }
+        return vehicleMake.toString();
+    }
+
 
     public static Vehicle createVehicleFromText(String vehicleDescription) {
 //      Registration: Ecto-1, Make: Cadillac, Model: Fleetwood, Year: 1959, Axles: 2, Occupants: 4
 
         String registration = extractRegistrationFromText(vehicleDescription);
-
+        String make = extractMakeFromText(vehicleDescription);
 
         return null;
     }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
