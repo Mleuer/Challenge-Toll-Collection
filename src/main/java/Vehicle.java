@@ -38,54 +38,57 @@ public class Vehicle {
         return false;
     }
 
-    public static String extractRegistrationFromText(String vehicleDescription) {
-        StringBuilder vehicleRegistration = new StringBuilder();
-        boolean vehicleRegistrationFound = false;
+//    public static String extractRegistrationFromText(String vehicleDescription) {
+//        StringBuilder vehicleRegistration = new StringBuilder();
+//        boolean vehicleRegistrationFound = false;
+//
+//        for (int i = 0; i < vehicleDescription.length(); i++){
+//            char character = vehicleDescription.charAt(i);
+//            if (character == ':') {
+//                vehicleRegistrationFound = true;
+//                continue;
+//            }
+//            if (character == ',') {
+//                break;
+//            }
+//            if (vehicleRegistrationFound) {
+//                vehicleRegistration.append(character);
+//            }
+//        }
+//        String cleanedVehicleRegistration = vehicleRegistration.toString();
+//        cleanedVehicleRegistration = cleanedVehicleRegistration.replaceAll(" ", "");
+//
+//        return cleanedVehicleRegistration;
+//    }
 
-        for (int i = 0; i < vehicleDescription.length(); i++){
-            char character = vehicleDescription.charAt(i);
-            if (character == ':') {
-                vehicleRegistrationFound = true;
-                continue;
-            }
-            if (character == ',') {
-                break;
-            }
-            if (vehicleRegistrationFound) {
-                vehicleRegistration.append(character);
-            }
-        }
-        String cleanedVehicleRegistration = vehicleRegistration.toString();
-        cleanedVehicleRegistration = cleanedVehicleRegistration.replaceAll(" ", "");
+    public static String extractVehiclePropertiesFromText(String vehicleDescription, String propertyIdentifier) {
+        StringBuilder vehicleProperty = new StringBuilder();
 
-        return cleanedVehicleRegistration;
-    }
+        int index = vehicleDescription.indexOf(propertyIdentifier);
 
-    public static String extractMakeFromText(String vehicleDescription) {
-        StringBuilder vehicleMake = new StringBuilder();
-
-        String makeIdentifier = "Make: ";
-        int index = vehicleDescription.indexOf(makeIdentifier);
-
-        int vehicleMakeStartingIndex = index + makeIdentifier.length();
+        int vehiclePropertyStartingIndex = index + propertyIdentifier.length();
         char currentCharacter = ' ';
 
-        for (int i = vehicleMakeStartingIndex;; i++) {
+        for (int i = vehiclePropertyStartingIndex;; i++) {
             currentCharacter = vehicleDescription.charAt(i);
             if (currentCharacter == ',') {
                 break;
             }
-            vehicleMake.append(currentCharacter);
+            vehicleProperty.append(currentCharacter);
         }
-        return vehicleMake.toString();
-    }
 
+        return vehicleProperty.toString();
+    }
 
     public static Vehicle createVehicleFromText(String vehicleDescription) {
 //      Registration: Ecto-1, Make: Cadillac, Model: Fleetwood, Year: 1959, Axles: 2, Occupants: 4
 
-        String registration = extractRegistrationFromText(vehicleDescription);
-        String make = extractMakeFromText(vehicleDescription);
+        String registration = extractVehiclePropertiesFromText(vehicleDescription, "Registration: ");
+        String make = extractVehiclePropertiesFromText(vehicleDescription, "Make: ");
+        String model = extractVehiclePropertiesFromText(vehicleDescription, "Model: ");
+        String year = extractVehiclePropertiesFromText(vehicleDescription, "Year: ");
+        String axles = extractVehiclePropertiesFromText(vehicleDescription, "Axles: ");
+        String occupants = extractVehiclePropertiesFromText(vehicleDescription, "Occupants: ");
 
         return null;
     }

@@ -29,16 +29,44 @@ public class VehicleTest {
     }
 
     @Test
-    public void extractRegistrationFromTextShouldReturnVehicleRegistration() {
-        String vehicleRegistration = Vehicle.extractRegistrationFromText("Registration: Ecto-1, Make: Cadillac, Model: Fleetwood, Year: 1959, Axles: 2, Occupants: 4");
+    public void extractVehiclePropertiesFromTextShouldExtractRegistrationFromText() {
+        String vehicleRegistration = Vehicle.extractVehiclePropertiesFromText("Registration: Ecto-1, Make: Cadillac, Model: Fleetwood, Year: 1959, Axles: 2, Occupants: 4", "Registration: ");
 
         Assert.assertEquals("Ecto-1", vehicleRegistration);
     }
 
     @Test
-    public void extractMakeFromTextShouldReturnVehicleMake() {
-        String vehicleMake = Vehicle.extractMakeFromText("Registration: Ecto-1, Make: Cadillac, Model: Fleetwood, Year: 1959, Axles: 2, Occupants: 4");
+    public void extractVehiclePropertiesFromTextShouldExtractMakeFromText() {
+        String vehicleMake = Vehicle.extractVehiclePropertiesFromText("Registration: Ecto-1, Make: Cadillac, Model: Fleetwood, Year: 1959, Axles: 2, Occupants: 4", "Make: ");
 
         Assert.assertEquals("Cadillac", vehicleMake);
+    }
+
+    @Test
+    public void extractVehiclePropertiesFromTextShouldExtractModelFromText() {
+        String vehicleModel = Vehicle.extractVehiclePropertiesFromText("Registration: Ecto-1, Make: Cadillac, Model: Fleetwood, Year: 1959, Axles: 2, Occupants: 4", "Model: ");
+
+        Assert.assertEquals("Fleetwood", vehicleModel);
+    }
+
+    @Test
+    public void extractVehiclePropertiesFromTextShouldExtractYearFromText() {
+        String vehicleYear = Vehicle.extractVehiclePropertiesFromText("Registration: Ecto-1, Make: Cadillac, Model: Fleetwood, Year: 1959, Axles: 2, Occupants: 4", "Year: ");
+
+        Assert.assertEquals("1959", vehicleYear);
+    }
+
+    @Test
+    public void extractVehiclePropertiesFromTextShouldExtractAxlesFromText() {
+        String vehicleAxles = Vehicle.extractVehiclePropertiesFromText("Registration: Ecto-1, Make: Cadillac, Model: Fleetwood, Year: 1959, Axles: 2, Occupants: 4", "Axles: ");
+
+        Assert.assertEquals("2", vehicleAxles);
+    }
+
+    @Test
+    public void extractVehiclePropertiesFromTextShouldExtractOccupantsFromText() {
+        String vehicleOccupants = Vehicle.extractVehiclePropertiesFromText("Registration: Ecto-1, Make: Cadillac, Model: Fleetwood, Year: 1959, Axles: 2, Occupants: 4", "Occupants: ");
+
+        Assert.assertEquals("4", vehicleOccupants);
     }
 }
