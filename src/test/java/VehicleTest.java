@@ -7,7 +7,7 @@ public class VehicleTest {
     public void VehicleShouldBeCreatedFromText() {
         Vehicle actualVehicle = Vehicle.createVehicleFromText("Registration: Ecto-1, Make: Cadillac, Model: Fleetwood, Year: 1959, Axles: 2, Occupants: 4");
 
-        Vehicle expectedVehicle = new Vehicle("Ecto-1", "Cadillac", "Fleetwood", java.time.Year.of(1992), 2, 4);
+        Vehicle expectedVehicle = new Vehicle("Ecto-1", "Cadillac", "Fleetwood", java.time.Year.of(1959), 2, 4);
 
         Assert.assertEquals(expectedVehicle, actualVehicle);
     }

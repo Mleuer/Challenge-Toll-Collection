@@ -38,29 +38,6 @@ public class Vehicle {
         return false;
     }
 
-//    public static String extractRegistrationFromText(String vehicleDescription) {
-//        StringBuilder vehicleRegistration = new StringBuilder();
-//        boolean vehicleRegistrationFound = false;
-//
-//        for (int i = 0; i < vehicleDescription.length(); i++){
-//            char character = vehicleDescription.charAt(i);
-//            if (character == ':') {
-//                vehicleRegistrationFound = true;
-//                continue;
-//            }
-//            if (character == ',') {
-//                break;
-//            }
-//            if (vehicleRegistrationFound) {
-//                vehicleRegistration.append(character);
-//            }
-//        }
-//        String cleanedVehicleRegistration = vehicleRegistration.toString();
-//        cleanedVehicleRegistration = cleanedVehicleRegistration.replaceAll(" ", "");
-//
-//        return cleanedVehicleRegistration;
-//    }
-
     public static String extractVehiclePropertiesFromText(String vehicleDescription, String propertyIdentifier) {
         StringBuilder vehicleProperty = new StringBuilder();
 
@@ -70,6 +47,9 @@ public class Vehicle {
         char currentCharacter = ' ';
 
         for (int i = vehiclePropertyStartingIndex;; i++) {
+            if (i >= vehicleDescription.length()) {
+                break;
+            }
             currentCharacter = vehicleDescription.charAt(i);
             if (currentCharacter == ',') {
                 break;
@@ -86,14 +66,20 @@ public class Vehicle {
         String registration = extractVehiclePropertiesFromText(vehicleDescription, "Registration: ");
         String make = extractVehiclePropertiesFromText(vehicleDescription, "Make: ");
         String model = extractVehiclePropertiesFromText(vehicleDescription, "Model: ");
+
         String year = extractVehiclePropertiesFromText(vehicleDescription, "Year: ");
+        int resultYear = Integer.parseInt(year);
+
         String axles = extractVehiclePropertiesFromText(vehicleDescription, "Axles: ");
+        int resultAxles = Integer.parseInt(axles);
+
         String occupants = extractVehiclePropertiesFromText(vehicleDescription, "Occupants: ");
+        int resultOccupants = Integer.parseInt(occupants);
 
-        return null;
+        Vehicle createdVehicle = new Vehicle(registration, make, model, java.time.Year.of(resultYear), resultAxles, resultOccupants);
+
+        return createdVehicle;
     }
-
-
 }
 
 
