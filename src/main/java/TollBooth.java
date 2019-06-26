@@ -11,14 +11,12 @@ public class TollBooth {
     }
 
     private BigDecimal calculateCarpoolDiscount(Vehicle vehicle, BigDecimal toll) {
-
         if (vehicle.occupants > 2) {
 
             BigDecimal perPassengerDiscount = new BigDecimal(0.25);
             BigDecimal extraPassengerDiscountMultiplier = new BigDecimal(vehicle.occupants - 2);
             BigDecimal passengerDiscount = perPassengerDiscount.multiply(extraPassengerDiscountMultiplier);
-            BigDecimal discountedToll = toll.subtract(passengerDiscount);
-            toll = discountedToll;
+            toll = toll.subtract(passengerDiscount);
         }
         return toll;
     }
