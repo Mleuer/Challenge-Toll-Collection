@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.time.Year;
 
 public class TollBooth {
 
@@ -7,6 +8,16 @@ public class TollBooth {
 
         toll = calculateAxleUpCharge(vehicle, toll);
         toll = calculateCarpoolDiscount(vehicle, toll);
+        toll = calculateEmissionsSurcharge(vehicle, toll);
+        return toll;
+    }
+
+    private BigDecimal calculateEmissionsSurcharge(Vehicle vehicle, BigDecimal toll) {
+
+        if (vehicle.year.isBefore(Year.of(1995))) {
+            BigDecimal upCharge = new BigDecimal(0.25);
+            toll = toll.add(upCharge);
+        }
         return toll;
     }
 

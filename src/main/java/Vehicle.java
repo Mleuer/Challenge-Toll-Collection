@@ -75,7 +75,7 @@ public class Vehicle {
         String occupants = extractVehiclePropertiesFromText(vehicleDescription, "Occupants: ");
         int resultOccupants = Integer.parseInt(occupants);
 
-        Vehicle createdVehicle = new Vehicle(registration, make, model, java.time.Year.of(resultYear), resultAxles, resultOccupants);
+        Vehicle createdVehicle = new Vehicle(registration, make, model, Year.of(resultYear), resultAxles, resultOccupants);
 
         return createdVehicle;
     }
