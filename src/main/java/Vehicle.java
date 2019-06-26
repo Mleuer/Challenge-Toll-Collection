@@ -38,12 +38,12 @@ public class Vehicle {
         return false;
     }
 
-    public static String extractVehiclePropertiesFromText(String vehicleDescription, String propertyIdentifier) {
+    public static String extractVehiclePropertiesFromText(String vehicleDescription, String vehiclePropertyIdentifier) {
         StringBuilder vehicleProperty = new StringBuilder();
 
-        int index = vehicleDescription.indexOf(propertyIdentifier);
+        int index = vehicleDescription.indexOf(vehiclePropertyIdentifier);
 
-        int vehiclePropertyStartingIndex = index + propertyIdentifier.length();
+        int vehiclePropertyStartingIndex = index + vehiclePropertyIdentifier.length();
         char currentCharacter = ' ';
 
         for (int i = vehiclePropertyStartingIndex;; i++) {
@@ -61,7 +61,6 @@ public class Vehicle {
     }
 
     public static Vehicle createVehicleFromText(String vehicleDescription) {
-//      Registration: Ecto-1, Make: Cadillac, Model: Fleetwood, Year: 1959, Axles: 2, Occupants: 4
 
         String registration = extractVehiclePropertiesFromText(vehicleDescription, "Registration: ");
         String make = extractVehiclePropertiesFromText(vehicleDescription, "Make: ");
