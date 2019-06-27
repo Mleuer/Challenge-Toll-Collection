@@ -3,6 +3,10 @@ import java.time.Year;
 
 public class TollBooth {
 
+    public BigDecimal calculateTotalToll() {
+        return null;
+    }
+
     public BigDecimal calculateToll(Vehicle vehicle) {
         BigDecimal toll = new BigDecimal(0.50);
 
@@ -42,6 +46,4 @@ public class TollBooth {
         }
         return toll;
     }
-
-
 }

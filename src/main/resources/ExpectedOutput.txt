@@ -1,0 +1,10 @@
+Registration: Ecto-1, Toll: $0.50
+Registration: PRIME, Toll: $1.25
+Registration: NO1DAD, Toll: $0.25
+Registration: L43S322, Toll: $2.50
+Registration: OUTATIME, Toll: $0.75
+Registration: THX138, Toll: $0.75
+Registration: 376PCE, Toll: $0.75
+Registration: PPW306R, Toll: $0.75
+Registration: SWEAR2ME, Toll: $0.50
+Total: $8.00

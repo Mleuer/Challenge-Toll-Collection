@@ -1,4 +1,6 @@
+import java.io.*;
 import java.time.Year;
+import java.util.ArrayList;
 
 public class Vehicle {
 
@@ -78,6 +80,18 @@ public class Vehicle {
         Vehicle createdVehicle = new Vehicle(registration, make, model, Year.of(resultYear), resultAxles, resultOccupants);
 
         return createdVehicle;
+    }
+
+    public static ArrayList<Vehicle> createVehiclesFromText(File input) throws IOException {
+        BufferedReader inputFileReader = new BufferedReader(new FileReader(input));
+        String line = inputFileReader.readLine();
+
+        ArrayList<Vehicle> vehicles = new ArrayList<>();
+        while (line != null) {
+            vehicles.add(Vehicle.createVehicleFromText(line));
+            line = inputFileReader.readLine();
+        }
+        return vehicles;
     }
 }
 

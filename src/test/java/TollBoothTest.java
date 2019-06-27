@@ -49,6 +49,20 @@ public class TollBoothTest {
 
             Assert.assertEquals(0, actualToll.compareTo(expectedToll));
     }
+
+    @Test
+    public void calculateTotalTollShouldCalculateSumOfTollsForAllVehicles() {
+            Vehicle vehicle1 = new Vehicle("Ecto-1", "Cadillac", "Fleetwood", Year.of(1990), 2, 2);
+            Vehicle vehicle2 = new Vehicle("PRIME", "Peterbilt", "379", Year.of(1992), 3, 0);
+            Vehicle vehicle3 = new Vehicle("NO1DAD", "Dodge", "Caravan", Year.of( 2015), 2, 3);
+            Vehicle vehicle4 = new Vehicle("L43S322", "Mack", "Titan", Year.of( 2008), 6, 1);
+            Vehicle vehicle5 = new Vehicle("OUTATIME", "DeLorean", "DeLorean", Year.of( 1982), 2, 1);
+            TollBooth tollBooth = new TollBooth();
+
+            tollBooth.calculateTotalToll();
+
+
+    }
 }
 
 

@@ -1,0 +1,9 @@
+Registration: Ecto-1, Make: Cadillac, Model: Fleetwood, Year: 1959, Axles: 2, Occupants: 4
+Registration: PRIME, Make: Peterbilt , Model: 379, Year: 1992, Axles: 3, Occupants: 0
+Registration: NO1DAD, Make: Dodge, Model: Caravan, Year: 2015, Axles: 2, Occupants: 3
+Registration: L43S322, Make: Mack, Model: Titan, Year: 2008, Axles: 6, Occupants: 1
+Registration: OUTATIME, Make: DeLorean, Model: DeLorean, Year: 1982, Axles: 2, Occupants: 1
+Registration: THX138, Make: Ford, Model: Ford, Year: 1932, Axles: 2, Occupants: 2
+Registration: 376PCE, Make: Ford, Model: GranTorino, Year: 1973, Axles: 2, Occupants: 2
+Registration: PPW306R, Make: Lotus, Model: Esprit, Year: 1975, Axles: 2, Occupants: 1
+Registration: SWEAR2ME, Make: Wayne, Model: Tumbler, Year: 2008, Axles: 2, Occupants: 1
