@@ -3,6 +3,9 @@ import org.junit.Test;
 
 import java.math.BigDecimal;
 import java.time.Year;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class TollBoothTest {
 
@@ -52,16 +55,19 @@ public class TollBoothTest {
 
     @Test
     public void calculateTotalTollShouldCalculateSumOfTollsForAllVehicles() {
-            Vehicle vehicle1 = new Vehicle("Ecto-1", "Cadillac", "Fleetwood", Year.of(1990), 2, 2);
-            Vehicle vehicle2 = new Vehicle("PRIME", "Peterbilt", "379", Year.of(1992), 3, 0);
-            Vehicle vehicle3 = new Vehicle("NO1DAD", "Dodge", "Caravan", Year.of( 2015), 2, 3);
-            Vehicle vehicle4 = new Vehicle("L43S322", "Mack", "Titan", Year.of( 2008), 6, 1);
-            Vehicle vehicle5 = new Vehicle("OUTATIME", "DeLorean", "DeLorean", Year.of( 1982), 2, 1);
+            Vehicle vehicle1 = new Vehicle("Ecto-1", "Cadillac", "Fleetwood", Year.of(1990), 2, 2);  // .75
+            Vehicle vehicle2 = new Vehicle("PRIME", "Peterbilt", "379", Year.of(1992), 3, 0);  // 1.25
+            Vehicle vehicle3 = new Vehicle("NO1DAD", "Dodge", "Caravan", Year.of( 2015), 2, 3);  // .25
+            Vehicle vehicle4 = new Vehicle("L43S322", "Mack", "Titan", Year.of( 2008), 6, 1);  // 2.50
+            Vehicle vehicle5 = new Vehicle("OUTATIME", "DeLorean", "DeLorean", Year.of( 1982), 2, 1);  // .75
+            List<Vehicle> vehicles = Arrays.asList(vehicle1, vehicle2, vehicle3, vehicle4, vehicle5);
+
             TollBooth tollBooth = new TollBooth();
 
-            tollBooth.calculateTotalToll();
+            BigDecimal actualToll = tollBooth.calculateTotalToll(vehicles);
+            BigDecimal expectedToll = new BigDecimal(5.50);
 
-
+            Assert.assertEquals(0, actualToll.compareTo(expectedToll));
     }
 }
 

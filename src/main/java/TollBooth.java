@@ -1,10 +1,17 @@
 import java.math.BigDecimal;
 import java.time.Year;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TollBooth {
 
-    public BigDecimal calculateTotalToll() {
-        return null;
+    public BigDecimal calculateTotalToll(List<Vehicle> vehicles) {
+        BigDecimal totalTolls = new BigDecimal(0);
+        for (Vehicle vehicle : vehicles) {
+            totalTolls = totalTolls.add(calculateToll(vehicle));
+        }
+
+        return totalTolls;
     }
 
     public BigDecimal calculateToll(Vehicle vehicle) {
