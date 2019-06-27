@@ -6,7 +6,6 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
         List<Vehicle> vehicles = Vehicle.createVehiclesFromText(new File("./DetectedVehicles.txt"));
-
         TollBooth tollBooth  = new TollBooth();
 
 

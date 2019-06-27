@@ -1,3 +1,9 @@
+import jdk.internal.org.jline.terminal.impl.AbstractWindowsConsoleWriter;
+
+import java.io.BufferedWriter;
+import java.io.Console;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.math.BigDecimal;
 import java.time.Year;
 import java.util.ArrayList;
@@ -52,5 +58,12 @@ public class TollBooth {
             toll = toll.add(upCharge);
         }
         return toll;
+    }
+
+    public void printVehicleToll(Vehicle vehicle, OutputStream output) {
+        BigDecimal toll = calculateToll(vehicle);
+
+        PrintStream outputWriter = new PrintStream(output);
+        outputWriter.println("Registration: " + vehicle.registration + ", Toll: $" + toll);
     }
 }

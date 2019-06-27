@@ -1,11 +1,13 @@
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.ByteArrayOutputStream;
 import java.math.BigDecimal;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.DoubleStream;
 
 public class TollBoothTest {
 
@@ -68,6 +70,16 @@ public class TollBoothTest {
             BigDecimal expectedToll = new BigDecimal(5.50);
 
             Assert.assertEquals(0, actualToll.compareTo(expectedToll));
+    }
+
+    @Test
+    public void printVehicleTollShouldPrintFormattedVehicleRegistrationAndToll() {
+            Vehicle vehicle = new Vehicle("Ecto-1", "Cadillac", "Fleetwood", Year.of(1959), 2, 3);
+            TollBooth tollBooth = new TollBooth();
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            tollBooth.printVehicleToll(vehicle, outputStream);
+
+            Assert.assertEquals("Registration: Ecto-1, Toll: $0.50\n", outputStream.toString());
     }
 }
 
