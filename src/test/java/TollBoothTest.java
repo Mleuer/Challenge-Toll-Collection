@@ -34,8 +34,8 @@ public class TollBoothTest {
     }
 
     @Test
-    public void calculateTollShouldDiscountTwentyFiveCentsForPassengersMoreThanTwo() {
-            Vehicle vehicle = new Vehicle("Ecto-1", "Cadillac", "Fleetwood", Year.of(2000), 2, 3);
+    public void calculateTollShouldDiscountTwentyFiveCentsForVehiclesWithMoreThanTwoPassengers() {
+            Vehicle vehicle = new Vehicle("Ecto-1", "Cadillac", "Fleetwood", Year.of(2000), 2, 4);
             TollBooth tollBooth = new TollBooth();
 
             BigDecimal actualToll = tollBooth.calculateToll(vehicle);
@@ -80,6 +80,30 @@ public class TollBoothTest {
             tollBooth.printVehicleToll(vehicle, outputStream);
 
             Assert.assertEquals("Registration: Ecto-1, Toll: $0.50\n", outputStream.toString());
+    }
+
+    @Test
+    public void printAllVehicleTollsShouldPrintFormattedVehicleRegistrationAndTollForEachVehicleAndTotalForAllVehicles() {
+            Vehicle vehicle1 = new Vehicle("Ecto-1", "Cadillac", "Fleetwood", Year.of(1959), 2, 4);
+            Vehicle vehicle2 = new Vehicle("PRIME", "Peterbilt", "379", Year.of(1992), 3, 0);  // 1.25
+            Vehicle vehicle3 = new Vehicle("NO1DAD", "Dodge", "Caravan", Year.of( 2015), 2, 3);  // .25
+            Vehicle vehicle4 = new Vehicle("L43S322", "Mack", "Titan", Year.of(2008), 6, 1);  // 2.50
+            Vehicle vehicle5 = new Vehicle("OUTATIME", "DeLorean", "DeLorean", Year.of( 1982), 2, 1);
+
+            List<Vehicle> vehicles = Arrays.asList(vehicle1, vehicle2, vehicle3, vehicle4, vehicle5);
+
+            TollBooth tollBooth = new TollBooth();
+            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+            tollBooth.printAllVehicleTolls(vehicles, outputStream);
+
+            String expected =   "Registration: Ecto-1, Toll: $0.50\n" +
+                                "Registration: PRIME, Toll: $1.25\n" +
+                                "Registration: NO1DAD, Toll: $0.25\n" +
+                                "Registration: L43S322, Toll: $2.50\n" +
+                                "Registration: OUTATIME, Toll: $0.75\n" +
+                                "Total: $5.25\n";
+
+            Assert.assertEquals(expected, outputStream.toString());
     }
 }
 

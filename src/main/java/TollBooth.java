@@ -1,10 +1,8 @@
 import jdk.internal.org.jline.terminal.impl.AbstractWindowsConsoleWriter;
 
-import java.io.BufferedWriter;
-import java.io.Console;
-import java.io.OutputStream;
-import java.io.PrintStream;
+import java.io.*;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.Year;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,10 +38,7 @@ public class TollBooth {
 
     private BigDecimal calculateCarpoolDiscount(Vehicle vehicle, BigDecimal toll) {
         if (vehicle.occupants > 2) {
-
-            BigDecimal perPassengerDiscount = new BigDecimal(0.25);
-            BigDecimal extraPassengerDiscountMultiplier = new BigDecimal(vehicle.occupants - 2);
-            BigDecimal passengerDiscount = perPassengerDiscount.multiply(extraPassengerDiscountMultiplier);
+            BigDecimal passengerDiscount = new BigDecimal(0.25);
             toll = toll.subtract(passengerDiscount);
         }
         return toll;
@@ -62,8 +57,57 @@ public class TollBooth {
 
     public void printVehicleToll(Vehicle vehicle, OutputStream output) {
         BigDecimal toll = calculateToll(vehicle);
+        toll = toll.setScale(2, RoundingMode.HALF_UP);
 
         PrintStream outputWriter = new PrintStream(output);
         outputWriter.println("Registration: " + vehicle.registration + ", Toll: $" + toll);
     }
+
+    public void printAllVehicleTolls(List<Vehicle> vehicles, OutputStream outputStream) {
+        BigDecimal totalToll = calculateTotalToll(vehicles);
+        totalToll = totalToll.setScale(2, RoundingMode.HALF_UP);
+
+        for (Vehicle vehicle: vehicles) {
+            printVehicleToll(vehicle, outputStream);
+        }
+        PrintStream outputWriter = new PrintStream(outputStream);
+        outputWriter.println("Total: $" + totalToll);
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
